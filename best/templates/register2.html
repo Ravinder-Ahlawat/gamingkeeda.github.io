@@ -1,0 +1,148 @@
+{% extends 'basic.html' %}
+{% block title%} Home Page {% endblock %} 
+{% block head %}
+
+
+<style>
+    .wts{
+        color: yellowgreen;
+        text-decoration: dotted;
+    }
+    #btnn{
+        color: greenyellow;
+    }
+    #headinga{
+      color:gray;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-align: center;
+        text-decoration: underline;
+        margin-top: 15px;
+    }
+    form{
+      margin-top: 3px;
+      margin-bottom: 10px;
+    }
+    .col-8{
+      background-color: aliceblue;
+      border-radius: 20px;
+      border-style: solid;
+      border-color: black;
+    }
+    #clickButton{
+        visibility: hidden;
+    }
+    #subbtn{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      min-width: 100px;
+      margin-bottom: 20px;
+    }
+
+</style>
+
+{% endblock %} 
+{% block body %}
+
+
+
+
+<div class="container my-5">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-8">
+
+<!-- Button trigger modal -->
+<button type="button" id="clickButton" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Enter Details to Proceed ...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="login" method="POST">
+            {% csrf_token %} 
+            <input type="hidden" name="path1" value="{{request.path}}">
+            <div class="my-3">
+              <label>User Name:-</label>
+            <input class="popup mx-3" type="text" name="username" placeholder="User Name">
+            </div>
+            <div class="my-3">
+              <label>Password :-</label>
+            <input class="popup mx-4" type="password" name="password" placeholder="password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-outline-success">
+        </form>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+        <h1 id="headinga">Enter Some Basic Details</h1>
+                {% for message in messages %}
+                <h3>{{message}}</h3>
+                {% endfor %}
+        <form action="pubgin" method="post">
+                {% csrf_token %}
+            <input type="hidden" name="id" value="{{user.id}}">
+            <input type="hidden" name="user" value="{{user.username}}">  
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="wts">PayTm No.</label>
+                <input type="tel" maxlength="10" minlength="10" required class="form-control" name="phone" id="exampleFormControlInput1" placeholder="9999999999">
+                <p><small>This field is required. if you left it blank your prize money is not sent.</small></p>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="wts">PUBG Name</label>
+                <input type="text" maxlength="20" required class="form-control" name="pubg_name" id="exampleFormControlInput1" placeholder="Shark soniyt">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="wts">PUBG ID</label>
+                <input type="number" maxlength="11" minlength="9" class="form-control" name="pubg_id" id="exampleFormControlInput1" placeholder="123456789">
+            </div>
+            <input class="btn btn-outline-success" id="subbtn" type="submit" method='POST'>
+          </form>
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <script>
+        document.getElementById("headinga").innerHTML = "Please complete your profile";
+    </script>
+    
+    {% else %}
+    
+    <script>
+        window.onload = function(){
+      document.getElementById('clickButton').click();
+    
+    }
+    </script>
+    {% endif %}
+
+
+{% endblock %} 

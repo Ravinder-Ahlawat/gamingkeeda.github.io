@@ -1,0 +1,61 @@
+{% extends 'basic.html' %}
+{% block title%} Payment Status {% endblock %}
+{% block head %}
+<style>
+    #head1{
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .status{
+        text-align: center;
+        top: 40%;
+        margin-top: 15px;
+    }
+    #msg{
+        margin-left: 20%;
+        margin-right: 20%;
+        text-align: center;
+    }
+    #ford{
+        visibility: hidden;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    
+    <div class="col my-4">
+        <h2 id="head1" class="heading mt-5">Payment status regarding your order ID {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+        
+        <h1 class="status"><i class="fa fa-check" aria-hidden="true" style="color: green; font-size: 200px;"></i></h1>
+        <h1 style="text-align: center;">JOINED MATCH SUCCESS</h1>
+        <p style="text-align: center;">You have successfully joined match. You pay Rs. {{response.TXNAMOUNT}} as entry fee. </br> Come at time and enjoy the match with earning. </br> Thank You For Joining.</p>
+        <p style="text-align: center; color: blue;">Search for more Matches <a href="/#head1">Click Here</a></p>
+        <form action="fordel" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="uid" value="{{response.ORDERID|slice:'-1:'}}">
+            <input type="hidden" name="mid" value="{{response.ORDERID|slice:'-2:-1'}}">
+            <input type="submit" id="ford">
+        </form>
+        {% else %}
+        <h1 class="status"><i class="fa fa-times" aria-hidden="true"  style="color: red; font-size: 200px;"></i></h1>
+        <h1 style="text-align: center;">FAIL TO JOIN MATCH</h1>
+        <p id="msg">{{response.RESPMSG}}.</p>
+        <p style="text-align: center; color: blue;">Search for more Matches <a href="/#heading1">Click Here</a></p>
+
+        {% endif %}
+        
+
+    </div>
+
+</div>
+<script>
+            window.onload = function(){
+      document.getElementById('ford').click();
+    
+    }
+</script>
+{% endblock %}

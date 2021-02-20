@@ -1,0 +1,549 @@
+{% extends 'basic.html' %}
+{% block title%} Match Detail {% endblock %} 
+{% block head %}
+<meta name="description" content="Hare you can join the PUBG tournament In India and play many other games like PUBG mobile, PUBG mobile lite, call of duty, clash Royale etc. with real cash earning. Welcome to GamingKeeda"
+ <meta name="keywords" content="Gaming Keeda, gamingkeeda, gaming keeda, PUBG Tournament, play and earn, Play games and earn, Esports india, Free pubg Tournament, Daily pubg Matches">
+ <meta name="robots" content="index,follow">
+ <meta name="googlebot" content="index,follow">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_IN">
+ <meta property="og:site_name" content="GamingKeeda">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+    <style>
+        html *{
+    -webkit-font-smoothing: antialiased;
+}
+
+.h6, h6 {
+    font-size: .75rem !important;
+    font-weight: 500;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    line-height: 1.5em;
+    text-transform: uppercase;
+}
+
+.name h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar {
+    border: 0;
+    border-radius: 3px;
+    padding: .625rem 0;
+    margin-bottom: 20px;
+    color: #555;
+    background-color: #fff!important;
+    box-shadow: 0 4px 18px 0 rgba(0,0,0,.12), 0 7px 10px -5px rgba(0,0,0,.15) !important;
+    z-index: 1000 !important;
+    transition: all 150ms ease 0s;
+    
+}
+
+.navbar.navbar-transparent {
+    z-index: 1030;
+    background-color: transparent!important;
+    box-shadow: none !important;
+    padding-top: 25px;
+    color: #fff;
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    color: inherit;
+    height: 50px;
+    font-size: 1.125rem;
+    line-height: 30px;
+    padding: .625rem 0;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:not(.btn) .material-icons {
+    margin-top: -7px;
+    top: 3px;
+    position: relative;
+    margin-right: 3px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link .material-icons {
+    font-size: 1.25rem;
+    max-width: 24px;
+    margin-top: -1.1em;
+}
+
+.navbar .navbar-nav .nav-item .nav-link .fa, .navbar .navbar-nav .nav-item .nav-link .material-icons {
+    font-size: 1.25rem;
+    max-width: 24px;
+    margin-top: -1.1em;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    position: relative;
+    color: inherit;
+    padding: .9375rem;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 3px;
+    line-height: 20px;
+}
+
+a .material-icons {
+    vertical-align: middle;
+}
+
+.fixed-top {
+    position: fixed;
+    z-index: 1030;
+    left: 0;
+    right: 0;
+}
+
+.profile-page .page-header {
+    height: 380px;
+    background-position:center;
+}
+
+.page-header {
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header-filter:after, .header-filter:before {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+}
+
+
+.main-raised {
+    margin: -60px 30px 0;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.main {
+    background: #FFF;
+    position: relative;
+    z-index: 3;
+}
+
+.profile-page .profile {
+    text-align: center;
+}
+
+.profile-page .profile img {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-transform: translate3d(0,-50%,0);
+    -moz-transform: translate3d(0,-50%,0);
+    -o-transform: translate3d(0,-50%,0);
+    -ms-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+}
+
+.img-raised {
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+
+.img-fluid, .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    min-height: 32px;
+    color: #3C4858;
+    font-weight: 700;
+    font-family: "Roboto Slab","Times New Roman",serif;
+}
+
+.profile-page .description {
+    margin: 1.071rem auto 0;
+    max-width: 600px;
+    color: #999;
+    font-weight: 300;
+}
+
+p {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.profile-page .profile-tabs {
+    margin-top: 4.284rem;
+}
+
+.nav-pills, .nav-tabs {
+    border: 0;
+    border-radius: 3px;
+    padding: 0 15px;
+}
+
+.nav .nav-item {
+    position: relative;
+    margin: 0 2px;
+}
+
+.nav-pills.nav-pills-icons .nav-item .nav-link {
+    border-radius: 4px;
+}
+
+.nav-pills .nav-item .nav-link.active {
+    color: #fff;
+    background-color: #9c27b0;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+}
+
+.nav-pills .nav-item .nav-link {
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 100px;
+    color: #555;
+    transition: all .3s;
+    border-radius: 30px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.nav-pills .nav-item .nav-link:not(.active):hover {
+    background-color: rgba(200,200,200,.2);
+}
+
+
+.nav-pills .nav-item i {
+    display: block;
+    font-size: 30px;
+    padding: 15px 0;
+}
+
+.tab-space {
+    padding: 20px 0 50px;
+}
+
+.profile-page .gallery {
+    margin-top: 3.213rem;
+    padding-bottom: 50px;
+}
+
+.profile-page .gallery img {
+    width: 100%;
+    margin-bottom: 2.142rem;
+}
+
+.profile-page .profile .name{
+    margin-top: -80px;
+}
+
+img.rounded {
+    border-radius: 6px!important;
+}
+
+.tab-content>.active {
+    display: block;
+}
+
+/*buttons*/
+.btn {
+    position: relative;
+    padding: 12px 30px;
+    margin: .3125rem 1px;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.428571;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    border: 0;
+    border-radius: .2rem;
+    outline: 0;
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+    will-change: box-shadow,transform;
+}
+
+.btn.btn-just-icon {
+    font-size: 20px;
+    height: 41px;
+    min-width: 41px;
+    width: 41px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    line-height: 41px;
+}
+
+.btn.btn-just-icon fa{
+    margin-top: 0;
+    position: absolute;
+    width: 100%;
+    transform: none;
+    left: 0;
+    top: 0;
+    height: 100%;
+    line-height: 41px;
+    font-size: 20px;
+}
+.btn.btn-link{
+    background-color: transparent;
+    color: #999;
+}
+
+/* dropdown */
+
+
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 11rem !important;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+}
+
+.dropdown-menu.show{
+    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+}
+
+
+.dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu a:hover {
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
+    background-color: #9c27b0;
+    color: #FFF;
+}
+.show .dropdown-toggle:after {
+    transform: rotate(180deg);
+}
+
+.dropdown-toggle:after {
+    will-change: transform;
+    transition: transform .15s linear;
+}
+
+
+.dropdown-menu .dropdown-item, .dropdown-menu li>a {
+    position: relative;
+    width: auto;
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+    color: #333;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: .8125rem;
+    border-radius: .125rem;
+    margin: 0 .3125rem;
+    transition: all .15s linear;
+    min-width: 7rem;
+    padding: 0.625rem 1.25rem;
+    min-height: 1rem !important;
+    overflow: hidden;
+    line-height: 1.428571;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+.dropdown-menu.dropdown-with-icons .dropdown-item {
+    padding: .75rem 1.25rem .75rem .75rem;
+}
+
+.dropdown-menu.dropdown-with-icons .dropdown-item .material-icons {
+    vertical-align: middle;
+    font-size: 24px;
+    position: relative;
+    margin-top: -4px;
+    top: 1px;
+    margin-right: 12px;
+    opacity: .5;
+}
+#path2{
+    visibility: hidden;
+}
+#tac{
+    text-decoration: underline;
+    color: blue;
+}
+.roomdetail{
+    text-align: center;
+}
+#errorm{
+    text-align: center;
+    color: red;
+    font-size: 24px;
+}
+    </style>
+{% endblock %}
+{% block body %}
+
+<div class="profile-page" id="onlo">
+    {% for message in messages %}
+                <p id="errorm">** {{message}} **</p>
+                {% endfor %}
+    <div class="page-header header-filter" data-parallax="true" style="background-image:url('/media/wp3276806-pubg-4k-wallpapers.jpg');"></div>
+    <div class="main main-raised">
+		<div class="profile-content">
+            <div class="container-fluid">
+                <div class="row">
+	                <div class="col-md-6 ml-auto mr-auto">
+        	           <div class="profile">
+	                        <div class="avatar">
+                                <img id="overimg" src="{{match.match_pics.url}}" alt="..."  class="img-raised rounded-circle img-fluid">
+	                        </div>
+	                        <div class="name">
+	                            <h2 class="title">MATCH :- {{match.match_name}}</h2>
+								<h3 class="dat2">	<i class="fa fa-calendar" aria-hidden="true"></i> {{match.match_date}} <i class="fa fa-clock-o" aria-hidden="true"></i> {{match.match_time}}</h3>
+								
+	                        </div>
+	                    </div>
+    	            </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% if user.is_authenticated %}
+                            <div id="roomhead">
+                            <h3 class="roomdetail">Room Details (visible 15 min. before match time)</h3>
+                            <h5 class="roomdetail"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Room Id :- <span id="rid">Visible Soon</span> <i class="fa fa-hand-o-left" aria-hidden="true"></i>  <i class="fa fa-hand-o-right" aria-hidden="true"></i> Room Password :- <span id="rpass">Visible Soon</span> <i class="fa fa-hand-o-left" aria-hidden="true"></i></h5>
+                            </div>
+                            {% endif %}
+                            <h1 id="pjh">PLAYER JOINED</h1>
+                            <div class="progress my-3">
+                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{joined}}%" aria-valuenow="{{joined}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p id="pgbar">{{joined}} out of 100</p>
+                            <div class="container">
+                                <div class="row">
+                                    {% for i in join|slice:"0:" %}
+                                  <div class="col-md-4">
+                                    <ul>   
+                                        <li id="joinedp">Name :- {{i.username}} <br> PUBG Id :- {{i.pubg_id}}</li>
+                                    </ul>
+                                  </div>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="req"> Match Details </h2>
+                            <ul id="reql">
+                                <li>Type :- {{match.match_type}}</li>
+                                <LI>Map :- {{match.match_map}}</LI>
+                                <li>Mode :- TPP</li>
+                            </ul>
+                            <h2 class="req">Requirements</h2>
+                            <ul id="reql">
+                                <li>Tier - Platinum and above</li>
+                                <li>Minimum matches played -100</li>
+                                <li>Level - 35 and above</li>
+                                <li>Minimum 3 seasons played</li>
+                                <li>Emulator players are not allowed</li>
+                                <li>No team up allowed (otherwise permanently Banned)</li>
+                            </ul>
+                            <br>
+                            <br>
+                            <h3 class="req">Winner Winner Chicken Dinner</h3>
+                            <h3 class="prize"><i class="fa fa-trophy" aria-hidden="true"> Winner = {{match.winner_prize}}</i></h3>
+                            <h3 class="prize"><i class="fa fa-trophy" aria-hidden="true"> Per Kill = {{match.per_kill_prize}}</i></h3>
+                            <h3 class="prize"><i class="fa fa-trophy" aria-hidden="true"> Entry = {{match.match_entry}}</i></h3>
+                        </div>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                {% if joined <= 99 %}
+                <form action="sub" method="POST">
+                    {% csrf_token %}
+                <input type="hidden" name="match_id" id="match_id" value="{{ myid }}">
+                <input type="hidden" name="uid" id="uid" value="{{ user.id }}">
+                <input type="hidden" name="match_name" id="match_name" value="{{match.match_name}}">
+                <input type="hidden" name="username" id="username" value="{{user.username}}">
+                <input type="hidden" name="amount" id="amount" value="{{match.match_entry}}">
+                <input type="hidden" name="email" id="email" value="{{user.email}}">
+                <div class="pubginfo mx-3">
+                    <label class="mr-3">PUBG ID :-</label>
+                    <input class="ml-2"type="number" name="pubg_id" placeholder="PUBG ID">
+                </div>
+            
+                <div class="form-check my-3 mx-3">
+                    <input class="form-check-input" type="checkbox" required value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                      I agree <a href="/termsandconditions/" id="tac">terms and conditions.</a>
+                    </label>
+                  </div>
+                  <input type="submit" class="btn btn-outline-success mx-3">
+                </form>
+            </div>
+
+                  
+    {% else %}
+    <h5>Room Full. No more space </h5>
+    <p><small> try any other match here.<a href="/#head1">New Match</a></small></p>
+    {% endif %}
+
+    {% else %}
+    <h4>Please Sign In to join a match</h4>
+    <a href="/">Join Now</a>
+
+    
+		</div>
+    {% endif %}
+ 
+
+
+<script>
+    //function for visibility of room detail at time
+    window.setInterval(function(){
+    var date = new Date();
+    var j_date = {{match.match_date.day}};
+    var j_month = {{match.match_date.month}};
+    var j_year = {{match.match_date.year}};
+    var hrs = ({{match.match_time.hour}} * 60 + {{match.match_time.minute}}) - 15;
+    var j_minutes = hrs % 60;
+    var j_hours = (hrs - j_minutes) / 60;
+    
+    if(date.getHours() === j_hours && date.getMinutes() >= j_minutes && date.getDate() === j_date && date.getMonth() + 1 === j_month && date.getFullYear() === j_year){ 
+        document.getElementById('rid').innerHTML = {{match.room_id}};
+        document.getElementById('rpass').innerHTML = {{match.room_pass}};
+    }
+}, 60);
+
+
+</script>
+    {% endblock %}
+
+
+    

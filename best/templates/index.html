@@ -1,0 +1,209 @@
+{% extends 'basic.html' %}
+ {% block title%} Home | GamingKeeda - Play, Win and Earn! {% endblock %} 
+ {% block head %}
+ <meta name="description" content="Play! Win! and Earn! Best Pubg Mobile Tournament website. Come to earn by play PUBG. Best match making low entry fee and high prizepool. Trusted by many youtubers.">
+ <meta name="keywords" content="Gaming Keeda, gamingkeeda, gaming keeda, PUBG Tournament, play and earn, Play games and earn, Esports india, Free pubg Tournament, Daily pubg Matches">
+ <meta name="robots" content="index,follow">
+ <meta name="googlebot" content="index,follow">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_IN">
+ <meta property="og:site_name" content="GamingKeeda">
+ <style>
+
+     .card-img{
+         max-height: 600px;        
+     }
+     .heading{
+         font-family: "Comic Sans MS", cursive, sans-serif;
+         -webkit-animation:colorchange 5s infinite alternate;
+         text-align: center;
+     }
+     .hediv{
+        border-radius: 5px;
+        border-style: solid;
+        border-color: yellow;
+        margin: 5px;
+     }
+     .card-img-top{
+         max-height: 180px;
+         min-height: 180px;
+     }
+     .card-title{
+         text-align: center;
+         border-color: yellowgreen;
+         border-radius: 2px;
+         border-style: dotted;
+         font-family: "Comic Sans MS", cursive, sans-serif;
+         color: #B60626;     
+     }
+     .dat{
+         text-align: center;
+     }
+     .card-text{
+        text-align: center;
+        font-family: Georgia, serif;
+        font-size: medium;
+     }
+     #btnjn, #btnjn1{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+     }
+     #imo{
+         color: aliceblue;
+         text-decoration: double;
+         text-align: end;
+         -webkit-animation:colorchange 5s infinite alternate;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: Bradley Hand, cursive;
+      
+    }
+
+    @-webkit-keyframes colorchange {
+      0% {
+        
+        color: blue;
+      }
+      
+      10% {
+        
+        color: black;
+      }
+      
+      20% {
+        
+        color: red;
+      }
+      
+      30% {
+        
+        color: yellow;
+      }
+      
+      40% {
+        
+        color: pink;
+      }
+      
+      50% {
+        
+        color: skyblue;
+      }
+      
+      60% {
+        
+        color: white;
+      }
+      
+      70% {
+        
+        color: green;
+      }
+      80% {
+     
+        color: purple;
+      }
+      
+      90% {
+     
+        color: orange;
+      }
+      
+      100% {
+        
+        color: brown;
+      }
+    }
+
+ </style> 
+
+
+
+
+
+
+ {% endblock %}
+ {% block body %}
+ <div class="card bg-dark text-white">
+    <img class="card-img" src="/media/Tournament_poster.jpg" alt="Card image">
+    <div class="card-img-overlay">
+      {% if user.is_authenticated %}
+        <p class="card-text">Hello,{{user.first_name}} {{user.last_name}}</p>
+{% endif %}
+        
+    </div>
+ </div>
+
+<!-- first text headline-->
+<div Class="hediv">
+    <h1 Class="heading" id="head1">&#9876;   UPCOMING MATCHES   &#9876;</h1>
+    
+</div>
+
+<!-- Starting first cards row -->
+
+<div class="row mx-3">  
+    {% for i in match|slice:"0:" %}
+        
+    
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="{{ i.match_pics.url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Match {{i.match_name}}</h5>
+                    <h6 class="dat">	<i class="fa fa-calendar" aria-hidden="true"></i> {{i.match_date}} <i class="fa fa-clock-o" aria-hidden="true"></i> {{i.match_time}}</h6>
+                    <p class="card-text"><span>Resisteration Fee:</span> <i class="fa fa-inr" aria-hidden="true"></i>{{i.match_entry}}</p>
+                    <p class="card-text"><i class="fa fa-trophy"></i>Prize Pool: <i class="fa fa-inr" aria-hidden="true"></i>. {{i.prize_pool}}</p>
+                    {% if i.match_date >= today %}
+                    <a href="/mdview/{{i.id}}" onclick="myFunction()" class="btn btn-outline-warning" role="button" aria-pressed="true" id="btnjn">JOIN NOW</a>
+                    {% else %}
+                    <a class="btn btn-outline-warning" role="button" aria-pressed="true" id="btnjn1">Match Completed</a>
+                    {% endif%}
+                    
+                </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+</div>
+
+
+
+<!-- End of first cards row -->
+
+
+
+<!-- 5th text headline-->
+<div Class="hediv">
+    <h1 class="heading">&#9876;   Previous Matches  &#9876;</h1>
+</div>
+
+
+<!-- Starting of 5th row -->
+<div class="row mx-3">
+    <div class="col-sm">
+        <h3 style="text-align: center; color: aliceblue;"> Match #0001 </h3>
+        <iframe width="300"
+            src="https://www.youtube.com/embed/P3eCxiOXolI">
+        </iframe>
+    </div>
+    <div class="col-sm">
+        <h3 style="text-align: center; color: aliceblue;"> Match #0002 </h3>
+        <iframe width="300"
+            src="https://www.youtube.com/embed/tuWPtzKNJhw">
+        </iframe>
+    </div>
+    <div class="col-sm">
+        <h3 style="text-align: center; color: aliceblue;"> Match #0003 </h3>
+        <iframe width="300"
+            src="https://www.youtube.com/embed/pnMwZyB12KE">
+        </iframe>
+    </div>
+</div>
+
+
+
+
+
+ {% endblock %} 

@@ -1,0 +1,44 @@
+{% extends 'basic.html' %}
+ {% block title%} More Games {% endblock %} 
+ {% block head %}
+ <style>
+   .bgimage{
+    position: relative;
+   }
+   .overlay_image{
+
+   }
+   #bg_img{
+    max-width: 100%;
+    height: auto;
+    filter: blur(3px);
+   }
+   #ol_img{
+      position: absolute;
+      top: 35%;
+    left: 30%;
+   }
+   #text{
+     text-align: center;
+     font-size: 35px;
+     color: black;
+     font-family: cursive;
+     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+   }
+ </style>
+
+ {% endblock %}
+ {% block body %}
+<div class="bgimage">
+  <img id="bg_img" src="/media/pjimage.jpg">
+  <div id="ol_img">
+    <p id="text">More Games and Features</p>
+    <img src="/media/coming-soon.png">
+    
+  </div>
+</div>
+
+
+
+
+ {% endblock %} 
